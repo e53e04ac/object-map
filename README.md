@@ -1,16 +1,16 @@
 # object-map
 
-# Requirements
+## Requirements
 
 - Node.js (v15)
 
-# Installation
+## Installation
 
 ~~~~~
 npm install e53e04ac/object-map
 ~~~~~
 
-# Example
+## Example
 
 ~~~~~ js
 const stream = require('stream');

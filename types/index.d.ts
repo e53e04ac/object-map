@@ -11,14 +11,11 @@ type ObjectMapConstructorOptions = {
     readableHighWaterMark?: number;
     writableHighWaterMark?: number;
     writableCorked?: number;
-    callback: {
-        (input: any): Promise<any>;
-    };
-};
+}
 
 type _ObjectMap = {
 
-};
+}
 
 type ObjectMap = stream.Transform & {
     ObjectMapConstructorOptions: {
@@ -27,10 +24,14 @@ type ObjectMap = stream.Transform & {
     _ObjectMap: {
         (): _ObjectMap;
     };
-};
+}
+
+type ObjectMapBlock = {
+    (input: any): Promise<any>;
+}
 
 type ObjectMapConstructor = {
-    (options: ObjectMapConstructorOptions): ObjectMap;
-};
+    (block: ObjectMapBlock, options?: ObjectMapConstructorOptions): ObjectMap;
+}
 
 export const ObjectMap: ObjectMapConstructor;

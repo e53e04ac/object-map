@@ -16,11 +16,7 @@ describe('index.js', async () => {
 
     it('coverage', async () => {
 
-        const objectMap = ObjectMap({
-            callback: async (input) => {
-                return input * 2;
-            }
-        });
+        const objectMap = ObjectMap(async (x) => x * 2);
         objectMap.ObjectMapConstructorOptions();
         objectMap._ObjectMap();
 

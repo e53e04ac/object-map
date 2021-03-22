@@ -16,15 +16,14 @@ const { ObjectMap } = (() => {
     /** @typedef ObjectMapConstructor @type {import('../types').ObjectMapConstructor} */
 
     /** @type {ObjectMapConstructor}  */
-    const ObjectMap = (options) => {
+    const ObjectMap = (block, options) => {
 
         /** @type {ObjectMapConstructorOptions}  */
         const _options = {};
-        _options.allowHalfOpen = options.allowHalfOpen;
-        _options.readableHighWaterMark = options.readableHighWaterMark;
-        _options.writableHighWaterMark = options.writableHighWaterMark;
-        _options.writableCorked = options.writableCorked;
-        _options.callback = options.callback;
+        _options.allowHalfOpen = options?.allowHalfOpen;
+        _options.readableHighWaterMark = options?.readableHighWaterMark;
+        _options.writableHighWaterMark = options?.writableHighWaterMark;
+        _options.writableCorked = options?.writableCorked;
 
         /** @type {_ObjectMap}  */
         const _it = {};
@@ -39,7 +38,7 @@ const { ObjectMap } = (() => {
             writableHighWaterMark: _options.writableHighWaterMark,
             writableCorked: _options.writableCorked,
             transform: async (chunk, encoding, callback) => {
-                const output = await _options.callback(chunk);
+                const output = await block(chunk);
                 it.push(output);
                 callback();
             }
